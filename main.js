@@ -39,8 +39,7 @@ class Particle {
     this.x += this.directionX;
   }
 }
-const particle1 = new Particle(400,900);
-const particle2 = new Particle(100,100);
+
 (function init() {
   particleArray = [];
   R.range(1,300).forEach( _  => {
