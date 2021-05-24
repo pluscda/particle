@@ -6,6 +6,10 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let particleArray = [];
 
+const titleEl = document.querySelector("#title1")
+const {left, top, width, height} = titleEl.getBoundingClientRect()
+
+const title = {x:left, y:top, width, height:10} ;
 
 const mouse = {radius:150}
 
@@ -34,9 +38,16 @@ class Particle {
       this.weight  = Math.random() * 1 + 1;
       this.x = Math.random() * canvas.width * 1.3;
     }
-    this.weight += 0.05;
+    this.weight += 0.01;
     this.y += this.weight;
     this.x += this.directionX;
+    const xOk = this.x < title.x + title.width && this.x + this.size > title.x;
+    const yOk = this.y < title.y + title.height && this.y + this.size > title.y;
+
+    if(xOk && yOk){
+      this.y -= 3;
+      this.weight *= -0.5;
+    }
   }
 }
 
@@ -58,5 +69,6 @@ class Particle {
     s.update();
     s.draw();
   })
+  //ctx.fillRect(title.x, title.y, title.width, title.height);
   requestAnimationFrame(animate)
 }())
