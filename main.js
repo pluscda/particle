@@ -65,11 +65,19 @@ class Particle {
 
 function init() {
   particleArray = [];
-  R.range(1,1000).forEach( _ => {
-     const x = Math.random() * canvas.width;
-     const y = Math.random() * canvas.height;
-     particleArray.push(new Particle(x, y))
-  })
+  const pixels = textCord.data;
+  const w = textCord.width;
+  const h = textCord.height;
+  const len = w * h;
+  for(let i = 0; i < len; ++i){
+     const a = pixels[ i * 4  + 3];
+     if(a > 128){
+        const y = parseInt( i/w , 10);
+        const x = i - y * w;
+        particleArray.push(new Particle(x * 10, y * 10));
+     }
+  }
+
 }
 
 init();
