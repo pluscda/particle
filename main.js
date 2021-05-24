@@ -82,13 +82,15 @@ class Particle {
 })()
 
 function connect(){
+  let opacityValue = 1;
   particleArray.forEach( (_, i) => {
     for(let b = i ; b < particleArray.length; ++b){
       const dx = particleArray[i].x - particleArray[b].x;
       const dy = particleArray[i].y - particleArray[b].y
       const  distance = Math.sqrt(dx * dx + dy * dy );
       if(distance < 50){
-        ctx.strokeStyle = "white";
+        opacityValue = 1 - (distance/50);
+        ctx.strokeStyle = `rgba(255,255,255,${opacityValue})`
         ctx.lineWidth = "2";
         ctx.beginPath();
         ctx.moveTo(particleArray[i].x, particleArray[i].y);
