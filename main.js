@@ -5,6 +5,8 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let particleArray = [];
+let adjustX = -570;
+let adjustY = -752;
 
 const mouse = {radius:150}
 
@@ -14,10 +16,8 @@ window.addEventListener('pointermove', (e) => {
 })
 
 ctx.fillStyle = "white";
-ctx.font = "90px Verdana"
-ctx.fillText("A", 20,60)
-ctx.strokeStyle = "white"
-ctx.strokeRect(0,0,100,100)
+ctx.font = "20px Verdana"
+ctx.fillText("DTC", 20,60);
 const textCord = ctx.getImageData(0,0,100,100);
 
 class Particle {
@@ -71,13 +71,14 @@ function init() {
   const len = w * h;
   for(let i = 0; i < len; ++i){
      const a = pixels[ i * 4  + 3];
-     if(a > 128){
+     if(a >= 128){
         const y = parseInt( i/w , 10);
         const x = i - y * w;
-        particleArray.push(new Particle(x * 10, y * 10));
+        const posX = x * 25 + adjustX;
+        const posY = y * 20 + adjustY;
+        particleArray.push(new Particle(posX, posY));
      }
   }
-
 }
 
 init();
