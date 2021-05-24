@@ -1,0 +1,16 @@
+{
+  "name": "partical",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "serve": "vite",
+    "build": "vite build",
+    "serve2": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.3.3"
+  },
+  "dependencies": {
+    "ramda": "^0.27.1"
+  }
+}
