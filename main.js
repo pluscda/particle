@@ -26,7 +26,7 @@ class Particle {
     this.directionX = -2;
   }
   draw() {
-    ctx.fillStyle="orangered";
+    ctx.fillStyle="purple";
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size , 0 , Math.PI * 2);
     ctx.closePath();
