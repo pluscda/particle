@@ -76,10 +76,5 @@ init();
 
 ;(function animate() {
   ctx.clearRect(0,0, canvas.width, canvas.height);
-  particleArray.forEach( s => {
-    s.update();
-    s.draw();
-   
-  })
-  requestAnimationFrame(animate);
+ 
 }())
