@@ -57,7 +57,7 @@ class Particle {
   }
 }
 
-(function init() {
+function init() {
   particleArray = [];
   R.range(1,500).forEach( _  => {
     const x = Math.random() * canvas.width;
@@ -65,7 +65,8 @@ class Particle {
     particleArray.push(new Particle(x, y));
   })
 
-})();
+};
+init();
 
 ;(function animate() {
   //ctx.clearRect(0,0, canvas.width, canvas.height);
