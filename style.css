@@ -7,7 +7,7 @@
 
  #canvas1 {
    position: absolute;
-   background: blue;
+   background: white;
    top:0;
    left:0;
    width:100%;
@@ -22,4 +22,16 @@
    color:black;
    font-size:120px;
    line-height: 110px;
+   white-space: nowrap;
+   border-top:5px soid black;
+ }
+
+ #title1::before{
+   content: 'is awesome';
+   position:absolute;
+   bottom:-70px;
+   font-size:40px;
+   text-align:center;
+   width:100%;
+
  }
