@@ -81,6 +81,25 @@ class Particle {
   }
 })()
 
+function connect(){
+  particleArray.forEach( (_, i) => {
+    for(let b = i ; b < particleArray.length; ++b){
+      const dx = particleArray[i].x - particleArray[b].x;
+      const dy = particleArray[i].y - particleArray[b].y
+      const  distance = Math.sqrt(dx * dx + dy * dy );
+      if(distance < 50){
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = "2";
+        ctx.beginPath();
+        ctx.moveTo(particleArray[i].x, particleArray[i].y);
+        ctx.lineTo(particleArray[b].x, particleArray[b].y);
+        ctx.stroke();
+      }
+
+    }
+  })
+}
+
 
 
 ;(function animate() {
@@ -88,7 +107,7 @@ class Particle {
   particleArray.forEach( s => {
     s.update();
     s.draw();
-   
   })
+  connect();
   requestAnimationFrame(animate);
 }())
