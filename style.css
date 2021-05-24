@@ -12,6 +12,7 @@
    left:0;
    width:100%;
    height:100%;
+   z-index:-1;
  }
 
  #title1{
@@ -23,7 +24,8 @@
    font-size:120px;
    line-height: 110px;
    white-space: nowrap;
-   border-top:5px soid black;
+   z-index:99999;
+   box-shadow: 0 -4px 0  black;
  }
 
  #title1::before{

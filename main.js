@@ -12,69 +12,41 @@ window.addEventListener('pointermove', (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
 })
-
-ctx.fillStyle = "white";
-ctx.font = "90px Verdana"
-ctx.fillText("A", 20,60)
-ctx.strokeStyle = "white"
-ctx.strokeRect(0,0,100,100)
-const textCord = ctx.getImageData(0,0,100,100);
-
 class Particle {
   constructor(x, y) {
-    this.x = x + 100;
+    this.x = x ;
     this.y = y;
-    this.size = 3;
-    this.baseX = this.x;
-    this.baseY = this.y;
-    this.density = Math.random() * 40 + 5;
+    this.size = 10;
+    this.weight = 2;
+    this.directionX = 1;
+    this.directionY = 1;
   }
   draw() {
-    ctx.fillStyle = "red";
+    ctx.fillStyle="red";
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+    ctx.arc(this.x, this.y, this.size , 0 , Math.PI * 2);
     ctx.closePath();
     ctx.fill();
   }
   update() {
-     const dx = mouse.x  - this.x;
-     const dy = mouse.y - this.y;
-     const distance = Math.sqrt(dx * dx + dy * dy);
-     const forceDirectionX = dx / distance;
-     const forceDirectionY = dy / distance;
-     const maxDistance = mouse.radius;
-     const force = (maxDistance - distance) / maxDistance;
-     const directionX = forceDirectionX * force * this.density;
-     const directionY = forceDirectionY * force * this.density;
-     if(distance < mouse.radius){
-       this.x -= directionX
-       this.y -= directionY;
-     }else {
-        if(this.x != this.baseX){
-           const dx  = this.x  - this.baseX;
-           this.x -= dx/5;
-        }
-        if(this.y != this.baseY){
-           const dy  = this.y  - this.baseY;
-           this.y -= dy/5;
-        }
-     }
-
+    this.weight += 0.01;
+    this.y += this.weight;
   }
 }
+const particle1 = new Particle(1000,10);
 
 function init() {
   particleArray = [];
-  R.range(1,1000).forEach( _ => {
-     const x = Math.random() * canvas.width;
-     const y = Math.random() * canvas.height;
-     particleArray.push(new Particle(x, y))
-  })
+
 }
 
 init();
 
 ;(function animate() {
-  ctx.clearRect(0,0, canvas.width, canvas.height);
- 
+  //ctx.clearRect(0,0, canvas.width, canvas.height);
+  ctx.fillStyle="rgba(255,255,255,0.01)";
+  ctx.fillRect(0,0, canvas.width, canvas.height);
+  particle1.update();
+  particle1.draw();
+  requestAnimationFrame(animate)
 }())
