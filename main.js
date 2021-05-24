@@ -5,8 +5,8 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let particleArray = [];
-let adjustX = -570;
-let adjustY = -752;
+const adjustX = -570;
+const adjustY = -752;
 
 const mouse = {radius:150}
 
