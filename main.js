@@ -17,7 +17,7 @@ window.addEventListener('pointermove', (e) => {
 
 ctx.fillStyle = "white";
 ctx.font = "20px Verdana"
-ctx.fillText("DTC", 20,60);
+ctx.fillText("YoWo", 20,60);
 const textCord = ctx.getImageData(0,0,100,100);
 
 class Particle {
