@@ -9,13 +9,19 @@ let particleArray = [];
 const titleEl = document.querySelector("#title1")
 const {left, top, width, height} = titleEl.getBoundingClientRect()
 
-const title = {x:left, y:top, width, height:10} ;
+let title = {x:left, y:top, width, height:10} ;
 
 const mouse = {radius:150}
 
 window.addEventListener('pointermove', (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+   const {left, top, width, height} = titleEl.getBoundingClientRect()
+    title = {x:left, y:top, width, height:10} ;
+
+    init();
 })
 class Particle {
   constructor(x, y) {
@@ -38,7 +44,7 @@ class Particle {
       this.weight  = Math.random() * 1 + 1;
       this.x = Math.random() * canvas.width * 1.3;
     }
-    this.weight += 0.01;
+    this.weight += 0.05;
     this.y += this.weight;
     this.x += this.directionX;
     const xOk = this.x < title.x + title.width && this.x + this.size > title.x;
@@ -53,7 +59,7 @@ class Particle {
 
 (function init() {
   particleArray = [];
-  R.range(1,300).forEach( _  => {
+  R.range(1,500).forEach( _  => {
     const x = Math.random() * canvas.width;
     const y = Math.random()* canvas.height;
     particleArray.push(new Particle(x, y));
