@@ -22,7 +22,7 @@ class Particle {
     this.directionX = -2;
   }
   draw() {
-    ctx.fillStyle="red";
+    ctx.fillStyle="orangered";
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size , 0 , Math.PI * 2);
     ctx.closePath();
@@ -31,7 +31,7 @@ class Particle {
   update() {
     if( this.y > canvas.height) {
       this.y = 0 - this.size;
-      this.weight  = 2;
+      this.weight  = Math.random() * 1 + 1;
       this.x = Math.random() * canvas.width * 1.3;
     }
     this.weight += 0.05;
