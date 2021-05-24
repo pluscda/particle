@@ -63,7 +63,7 @@ class Particle {
   }
 }
 
-function init() {
+(function init() {
   particleArray = [];
   const pixels = textCord.data;
   const w = textCord.width;
@@ -79,9 +79,9 @@ function init() {
         particleArray.push(new Particle(posX, posY));
      }
   }
-}
+})()
 
-init();
+
 
 ;(function animate() {
   ctx.clearRect(0,0, canvas.width, canvas.height);
